@@ -22,5 +22,10 @@ func main() {
 
 	r.HandleFunc("/", routes.HomeHandler)
 
+	r.HandleFunc("/agents", routes.GetAgentsHandler).Methods("GET")
+	r.HandleFunc("/agents/{id}", routes.GetAgentHandler).Methods("GET")
+	r.HandleFunc("/agents", routes.PostAgentsHandler).Methods("POST")
+	r.HandleFunc("/agents/{id}", routes.DeleteAgentHandler).Methods("DELETE")
+
 	http.ListenAndServe(":3000", r)
 }
