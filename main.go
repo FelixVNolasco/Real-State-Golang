@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/FelixVNolasco/real-state-golang/db"
+	"github.com/FelixVNolasco/real-state-golang/models"
 	"github.com/FelixVNolasco/real-state-golang/routes"
 	"github.com/gorilla/mux"
 )
@@ -11,6 +12,11 @@ import (
 func main() {
 
 	db.DBConnection()
+
+	db.DB.AutoMigrate(models.Agent{})
+	db.DB.AutoMigrate(models.House{})
+	db.DB.AutoMigrate(models.HouseDetails{})
+	db.DB.AutoMigrate(models.HouseGallery{})
 
 	r := mux.NewRouter()
 
