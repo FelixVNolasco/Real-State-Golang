@@ -6,5 +6,5 @@ type HouseGallery struct {
 	gorm.Model
 
 	HouseID uint
-	// Photos  []Photo
+	Photos  []Photo
 }

@@ -1,6 +1,10 @@
 package models
 
+import "gorm.io/gorm"
+
 type Photo struct {
-	url          string
-	HouseGallery uint
+	gorm.Model
+
+	url            string
+	HouseGalleryID uint
 }
