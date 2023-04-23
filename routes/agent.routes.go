@@ -6,6 +6,7 @@ import (
 
 	"github.com/FelixVNolasco/real-state-golang/db"
 	"github.com/FelixVNolasco/real-state-golang/models"
+	"github.com/gorilla/mux"
 )
 
 func GetAgentsHandler(w http.ResponseWriter, r *http.Request) {
@@ -16,7 +17,21 @@ func GetAgentsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetAgentHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("get agent"))
+
+	var agent models.Agent
+	params := mux.Vars(r)
+
+	db.DB.First(&agent, params["id"])
+
+	if agent.ID == 0 {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte("User not found"))
+		return
+	}
+
+	db.DB.Model(&agent).Association("Houses").Find(&agent.Houses)
+
+	json.NewEncoder(w).Encode(&agent)
 }
 
 func PostAgentsHandler(w http.ResponseWriter, r *http.Request) {
@@ -38,5 +53,17 @@ func PostAgentsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteAgentHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Delete"))
+	var agent models.Agent
+	params := mux.Vars(r)
+
+	db.DB.First(&agent, params["id"])
+
+	if agent.ID == 0 {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte("User not found"))
+		return
+	}
+
+	db.DB.Delete(&agent)
+	w.WriteHeader(http.StatusNoContent)
 }
