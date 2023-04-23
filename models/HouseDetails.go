@@ -5,9 +5,9 @@ import "gorm.io/gorm"
 type HouseDetails struct {
 	gorm.Model
 
-	HouseID    uint
-	Rooms      int
-	Bathrooms  string
-	ParkingLot string
-	SQ_MT      string
+	HouseID    uint   `json:"house_id"`
+	Rooms      int    `json:"rooms"`
+	Bathrooms  string `json:"bathrooms"`
+	ParkingLot string `json:"parking_lot"`
+	SQ_MT      string `json:"sq_mt"`
 }

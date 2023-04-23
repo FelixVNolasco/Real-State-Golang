@@ -52,6 +52,24 @@ func PostAgentsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(&agent)
 }
 
+func UpdateAgentHandler(w http.ResponseWriter, r *http.Request) {
+	var agent models.Agent
+	params := mux.Vars(r)
+
+	db.DB.First(&agent, params["id"])
+
+	json.NewDecoder(r.Body).Decode(&agent)
+
+	if agent.ID == 0 {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte("Agent not found"))
+		return
+	}
+
+	db.DB.Save(&agent)
+	w.WriteHeader(http.StatusNoContent)
+}
+
 func DeleteAgentHandler(w http.ResponseWriter, r *http.Request) {
 	var agent models.Agent
 	params := mux.Vars(r)
@@ -60,7 +78,7 @@ func DeleteAgentHandler(w http.ResponseWriter, r *http.Request) {
 
 	if agent.ID == 0 {
 		w.WriteHeader(http.StatusNotFound)
-		w.Write([]byte("User not found"))
+		w.Write([]byte("Agent not found"))
 		return
 	}
 

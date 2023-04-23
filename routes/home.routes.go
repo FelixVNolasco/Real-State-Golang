@@ -28,6 +28,8 @@ func PostHouseHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	db.DB.Model(&house).Association("HouseDetails").Find(&house.HouseDetails)
+
 	json.NewEncoder(w).Encode(&house)
 }
 
@@ -44,8 +46,28 @@ func GetHouseHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	db.DB.Model(&house).Association("HouseDetails").Find(&house.HouseDetails)
+
 	json.NewEncoder(w).Encode(&house)
 
+}
+
+func UpdateHouseHandler(w http.ResponseWriter, r *http.Request) {
+	var house models.House
+	params := mux.Vars(r)
+
+	db.DB.First(&house, params["id"])
+
+	json.NewDecoder(r.Body).Decode(&house)
+
+	if house.ID == 0 {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte("House not found"))
+		return
+	}
+
+	db.DB.Save(&house)
+	w.WriteHeader(http.StatusNoContent)
 }
 
 func DeleteHousesHandler(w http.ResponseWriter, r *http.Request) {
