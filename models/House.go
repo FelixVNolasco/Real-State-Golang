@@ -9,6 +9,7 @@ type House struct {
 	Price        string `gorm:"not null" json:"price"`
 	Location     string `gorm:"not null" json:"location"`
 	Description  string `gorm:"not null" json:"description"`
+	PhotoURL     string `json:"photo_url"`
 	Status       bool   `gorm:"default:true" json:"status"`
 	AgentID      uint   `json:"agent_id"`
 	HouseDetails HouseDetails
