@@ -5,6 +5,6 @@ import "gorm.io/gorm"
 type HouseGallery struct {
 	gorm.Model
 
-	HouseID uint
-	Photos  []Photo
+	HouseID uint    `json:"house_id"`
+	Photos  []Photo `json:"photos"`
 }

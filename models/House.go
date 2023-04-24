@@ -12,4 +12,5 @@ type House struct {
 	Status       bool   `gorm:"default:true" json:"status"`
 	AgentID      uint   `json:"agent_id"`
 	HouseDetails HouseDetails
+	HouseGallery HouseGallery
 }

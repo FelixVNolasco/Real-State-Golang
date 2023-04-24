@@ -20,8 +20,6 @@ func main() {
 
 	r := mux.NewRouter()
 
-	r.HandleFunc("/", routes.HomeHandler)
-
 	// Agents Routes
 
 	r.HandleFunc("/agents", routes.GetAgentsHandler).Methods("GET")
@@ -44,6 +42,16 @@ func main() {
 	r.HandleFunc("/house/details", routes.PostHouseDetailsHandler).Methods("POST")
 	r.HandleFunc("/house/details/{id}", routes.UpdateHouseDetailsHandler).Methods("PUT")
 	r.HandleFunc("/house/details/{id}", routes.DeleteHouseDetailsHandler).Methods("DELETE")
+
+	// House Gallery Routes
+
+	r.HandleFunc("/gallery/{id}", routes.GetHouseGalleryHandler).Methods("GET")
+	r.HandleFunc("/gallery", routes.PostHouseGalleryHandler).Methods("POST")
+
+	// House Gallery Routes
+
+	r.HandleFunc("/photo/{id}", routes.GetPhotoHandler).Methods("GET")
+	r.HandleFunc("/photo", routes.PostPhotoHandler).Methods("POST")
 
 	http.ListenAndServe(":3000", r)
 }
