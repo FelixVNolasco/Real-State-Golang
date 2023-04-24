@@ -17,6 +17,7 @@ func main() {
 	db.DB.AutoMigrate(models.House{})
 	db.DB.AutoMigrate(models.HouseDetails{})
 	db.DB.AutoMigrate(models.HouseGallery{})
+	db.DB.AutoMigrate(models.Photo{})
 
 	r := mux.NewRouter()
 
@@ -48,7 +49,7 @@ func main() {
 	r.HandleFunc("/gallery/{id}", routes.GetHouseGalleryHandler).Methods("GET")
 	r.HandleFunc("/gallery", routes.PostHouseGalleryHandler).Methods("POST")
 
-	// House Gallery Routes
+	// Photo Routes
 
 	r.HandleFunc("/photo/{id}", routes.GetPhotoHandler).Methods("GET")
 	r.HandleFunc("/photo", routes.PostPhotoHandler).Methods("POST")
