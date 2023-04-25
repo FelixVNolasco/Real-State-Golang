@@ -34,7 +34,7 @@ func main() {
 	r.HandleFunc("/houses", routes.GetHousesHandler).Methods("GET")
 	r.HandleFunc("/houses/{id}", routes.GetHouseHandler).Methods("GET")
 	r.HandleFunc("/houses", routes.PostHouseHandler).Methods("POST")
-	r.HandleFunc("/houses/{id}", routes.UpdateHouseHandler).Methods("POST")
+	r.HandleFunc("/houses/{id}", routes.UpdateHouseHandler).Methods("PUT")
 	r.HandleFunc("/houses/{id}", routes.DeleteHousesHandler).Methods("DELETE")
 
 	// House Details Routes
