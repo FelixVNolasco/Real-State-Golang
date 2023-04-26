@@ -11,7 +11,8 @@ import (
 
 func GetHousesHandler(w http.ResponseWriter, r *http.Request) {
 	var houses []models.House
-	db.DB.Find(&houses)
+	db.DB.Preload("HouseDetails").Preload("HouseGallery").Find(&houses)
+	// db.DB.Preload("HouseGallery").Find(&houses)
 	json.NewEncoder(w).Encode(houses)
 }
 
