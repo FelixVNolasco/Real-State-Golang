@@ -22,7 +22,7 @@ func main() {
 	// Create an API handler which serves data from PlanetScale.
 	handler := routes.NewHandler(db.DBConnection())
 
-	const addr = ":3000"
+	const addr = ":8080"
 
 	if err := http.ListenAndServe(addr, handler); err != nil {
 		log.Fatalf("failed to serve HTTP: %v", err)

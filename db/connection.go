@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
-	"gorm.io/driver/postgres"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
@@ -22,7 +22,7 @@ func DBConnection() *gorm.DB {
 
 	var err error
 	// DB, error = gorm.Open(postgres.Open(DSN), &gorm.Config{})
-	DB, err = gorm.Open(postgres.Open(os.Getenv("DSN")), &gorm.Config{
+	DB, err = gorm.Open(mysql.Open(os.Getenv("DSN")), &gorm.Config{
 		DisableForeignKeyConstraintWhenMigrating: true,
 	})
 

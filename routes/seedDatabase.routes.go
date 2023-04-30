@@ -9,11 +9,11 @@ import (
 
 func seedDatabase(w http.ResponseWriter, r *http.Request) {
 
-	db.DB.AutoMigrate(models.Agent{})
-	db.DB.AutoMigrate(models.House{})
-	db.DB.AutoMigrate(models.HouseDetails{})
-	db.DB.AutoMigrate(models.HouseGallery{})
-	db.DB.AutoMigrate(models.Photo{})
+	// db.DB.AutoMigrate(models.Agent{})
+	// db.DB.AutoMigrate(models.House{})
+	// db.DB.AutoMigrate(models.HouseDetails{})
+	// db.DB.AutoMigrate(models.HouseGallery{})
+	// db.DB.AutoMigrate(models.Photo{})
 
 	// Perform initial schema migrations.
 	if err := db.DB.AutoMigrate(models.Agent{}); err != nil {
