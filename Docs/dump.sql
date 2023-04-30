@@ -151,7 +151,8 @@ CREATE TABLE public.houses (
     status boolean DEFAULT true,
     agent_id bigint,
     house_details_id bigint,
-    photo_url text
+    photo_url text,
+    house_gallery_id bigint
 );
 
 
@@ -284,6 +285,16 @@ COPY public.house_details (id, created_at, updated_at, deleted_at, house_id, roo
 --
 
 COPY public.house_galleries (id, created_at, updated_at, deleted_at, house_id) FROM stdin;
+2	2023-04-26 19:08:04.754491+00	2023-04-26 19:08:04.754491+00	\N	3
+3	2023-04-26 19:08:40.851409+00	2023-04-26 19:08:40.851409+00	\N	4
+4	2023-04-26 19:08:44.166012+00	2023-04-26 19:08:44.166012+00	\N	5
+5	2023-04-26 19:08:47.977825+00	2023-04-26 19:08:47.977825+00	\N	6
+6	2023-04-26 19:08:50.461508+00	2023-04-26 19:08:50.461508+00	\N	7
+7	2023-04-26 19:08:52.943265+00	2023-04-26 19:08:52.943265+00	\N	8
+8	2023-04-26 19:08:55.504228+00	2023-04-26 19:08:55.504228+00	\N	9
+9	2023-04-26 19:08:57.999678+00	2023-04-26 19:08:57.999678+00	\N	10
+10	2023-04-26 19:09:03.663128+00	2023-04-26 19:09:03.663128+00	\N	11
+11	2023-04-26 19:09:05.944602+00	2023-04-26 19:09:05.944602+00	\N	12
 \.
 
 
@@ -291,17 +302,17 @@ COPY public.house_galleries (id, created_at, updated_at, deleted_at, house_id) F
 -- Data for Name: houses; Type: TABLE DATA; Schema: public; Owner: felixvnolasco
 --
 
-COPY public.houses (id, created_at, updated_at, deleted_at, title, price, location, description, status, agent_id, house_details_id, photo_url) FROM stdin;
-3	2023-04-23 22:36:53.31758+00	2023-04-25 19:55:22.51732+00	\N	Super 1000	$934,000.00 MXN	Chalco, Estado de México	Te presento la casa más vendida y solicitada en Chalco Estado de México, una hermosa casa que puedes ampliar y decorar a tu gusto, es la casa que más personas han adquirido, y la cual se puede ajustar a tu crédito!. Ven y conoce el mejor fraccionamiento, por ubicación y precio, servicios y cercanía de todo lo que estás buscando, ✨‼️AGENDA TU, CITA HOY MISMO✨‼️	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682450361/RealState/super-1000.webp
-4	2023-04-23 22:37:12.397654+00	2023-04-25 19:55:31.767757+00	\N	Super 1000 Plus	$1,212,000.00 MXN	Chalco, Estado de México	Te vas a enamorar de esta hermosa casa, tiene todo lo que necesitas. Es una casa que tiene espacios amplios y cómodos con la mejor distribución de espacios, ven y conoce la maravillosa opción que tengo para ti❤️‼️✨Te invito a que conozcas la casa más vendida y solicitada en una zona segura y cercana a todos los servicios✨‼️	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451244/RealState/super-1000-plus.webp
-12	2023-04-23 22:38:53.207954+00	2023-04-25 19:59:44.802636+00	\N	Royal 8000 Plus	$3,573,000.00 MXN	Chalco, Estado de México	La casa top🔝🔟 en nuestro FRACCIONAMIENTO EXCLUSIVO Y RESIDENCIAL, ven y conoce la mejor casa, atención a gente que quiere vivir como “MILLONARIO”	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/c_scale,w_304/v1682451502/RealState/royal-8000-plus.webp
-5	2023-04-23 22:37:32.901679+00	2023-04-25 19:55:45.327795+00	\N	Grand 2000	$1,114,000.00 MXN	Chalco, Estado de México	Casa de 2 recámaras con posibilidad de crecimiento, ven u conoce el modelo más solicitado en Chacó Estado de México. Con una gran ubicación a solo 8 min del centro de chalco. ¡Agenda tu cita! Tengo casas disponibles al mejor 🏆 precio. Tenemos casa con terrenos excedentes hasta de 31 mts2. No sabes lo increíbles que están!!	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451738/RealState/grand-2000.webp
-6	2023-04-23 22:37:53.931171+00	2023-04-25 19:55:54.012691+00	\N	Grand 2000 Plus	$1,506,000.00 MXN	Chalco, Estado de México	Ven a conocer la casa con espacios increíbles en Chalco, es un excelente momento para que adquieras tu casa. “Agenda una cita”	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451409/RealState/grand-2000-plus.webp
-7	2023-04-23 22:38:05.685505+00	2023-04-25 19:56:03.087758+00	\N	Garden 6000	$1,312,000.00 MXN	Chalco, Estado de México	Casa con 2 cajones de estacionamiento, ideal para aquellas personas que tienen mascotas o gustan de un jardín amplio para reuniones familiares.	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451451/RealState/garden-6000.webp
-8	2023-04-23 22:38:13.13546+00	2023-04-25 19:56:12.570129+00	\N	Garden 8000	$1,522,000.00 MXN	Chalco, Estado de México	Linda casa con 3 estacionamientos, es una maravillosa casa para quien busca espacios amplios para que jueguen sus pequeños y mascotas, tiene un amplio jardín y estacionamientos frente de la casa. Ven u descubre todas las opciones increíbles que tengo para ti… no esperes más!!	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451463/RealState/garden-8000.webp
-9	2023-04-23 22:38:27.455932+00	2023-04-25 19:56:20.793685+00	\N	Premier 6000	$1,984,000.00 MXN	Chalco, Estado de México	Te presento una casa de 3 recámaras, que puedes ampliar, y hacer crecer tus espacios, es una excelente opción para aquellas personas que les gusta vivir en comodidad y seguridad con su familia. No esperes más y descubre la manera mas fácil en la que puedes cambiar tu ¡vida y de tu familia!	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451784/RealState/premier-6000.webp
-10	2023-04-23 22:38:33.451521+00	2023-04-25 19:56:33.598967+00	\N	Premier 6000 Plus	$2,456,000.00 MXN	Chalco, Estado de México	Tengo a la venta esta hermosa casa, te enamoraras de ella, es única en el Estado de México que te brindará lo que tu familia y tú buscan. Casa moderna con los mejores acabados y de lujo, ven y conoce las hermosas ubicaciones en Chalco. Carretera Mixquic-Chalco. ‼️✨AGENDA TU CITA HOY MISMO✨‼️	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451434/RealState/premier-6000-plus.webp
-11	2023-04-23 22:38:41.509674+00	2023-04-25 19:56:51.208711+00	\N	Royal 8000	$2,629,000.00 MXN	Chalco, Estado de México	En Residencial Iztac hay un lugar hermoso en el que podrás vivir experiencias en compañía de tu familia y amigos. Tenemos diferentes casas para diferentes presupuestos que se pueden ajustar a tu economía, no hay mejor inversión que un bien inmueble, visita *RESIDENCIAL IZTAC* y conoce las mejores casas del Estado de México, no esperes más y ‼️“AGENDA UNA CITA”‼️	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451470/RealState/royal-8000.webp
+COPY public.houses (id, created_at, updated_at, deleted_at, title, price, location, description, status, agent_id, house_details_id, photo_url, house_gallery_id) FROM stdin;
+3	2023-04-23 22:36:53.31758+00	2023-04-25 19:55:22.51732+00	\N	Super 1000	$934,000.00 MXN	Chalco, Estado de México	Te presento la casa más vendida y solicitada en Chalco Estado de México, una hermosa casa que puedes ampliar y decorar a tu gusto, es la casa que más personas han adquirido, y la cual se puede ajustar a tu crédito!. Ven y conoce el mejor fraccionamiento, por ubicación y precio, servicios y cercanía de todo lo que estás buscando, ✨‼️AGENDA TU, CITA HOY MISMO✨‼️	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682450361/RealState/super-1000.webp	\N
+12	2023-04-23 22:38:53.207954+00	2023-04-25 19:59:44.802636+00	\N	Royal 8000 Plus	$3,573,000.00 MXN	Chalco, Estado de México	La casa top🔝🔟 en nuestro FRACCIONAMIENTO EXCLUSIVO Y RESIDENCIAL, ven y conoce la mejor casa, atención a gente que quiere vivir como “MILLONARIO”	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/c_scale,w_304/v1682451502/RealState/royal-8000-plus.webp	\N
+5	2023-04-23 22:37:32.901679+00	2023-04-25 19:55:45.327795+00	\N	Grand 2000	$1,114,000.00 MXN	Chalco, Estado de México	Casa de 2 recámaras con posibilidad de crecimiento, ven u conoce el modelo más solicitado en Chacó Estado de México. Con una gran ubicación a solo 8 min del centro de chalco. ¡Agenda tu cita! Tengo casas disponibles al mejor 🏆 precio. Tenemos casa con terrenos excedentes hasta de 31 mts2. No sabes lo increíbles que están!!	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451738/RealState/grand-2000.webp	\N
+6	2023-04-23 22:37:53.931171+00	2023-04-25 19:55:54.012691+00	\N	Grand 2000 Plus	$1,506,000.00 MXN	Chalco, Estado de México	Ven a conocer la casa con espacios increíbles en Chalco, es un excelente momento para que adquieras tu casa. “Agenda una cita”	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451409/RealState/grand-2000-plus.webp	\N
+7	2023-04-23 22:38:05.685505+00	2023-04-25 19:56:03.087758+00	\N	Garden 6000	$1,312,000.00 MXN	Chalco, Estado de México	Casa con 2 cajones de estacionamiento, ideal para aquellas personas que tienen mascotas o gustan de un jardín amplio para reuniones familiares.	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451451/RealState/garden-6000.webp	\N
+8	2023-04-23 22:38:13.13546+00	2023-04-25 19:56:12.570129+00	\N	Garden 8000	$1,522,000.00 MXN	Chalco, Estado de México	Linda casa con 3 estacionamientos, es una maravillosa casa para quien busca espacios amplios para que jueguen sus pequeños y mascotas, tiene un amplio jardín y estacionamientos frente de la casa. Ven u descubre todas las opciones increíbles que tengo para ti… no esperes más!!	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451463/RealState/garden-8000.webp	\N
+9	2023-04-23 22:38:27.455932+00	2023-04-25 19:56:20.793685+00	\N	Premier 6000	$1,984,000.00 MXN	Chalco, Estado de México	Te presento una casa de 3 recámaras, que puedes ampliar, y hacer crecer tus espacios, es una excelente opción para aquellas personas que les gusta vivir en comodidad y seguridad con su familia. No esperes más y descubre la manera mas fácil en la que puedes cambiar tu ¡vida y de tu familia!	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451784/RealState/premier-6000.webp	\N
+10	2023-04-23 22:38:33.451521+00	2023-04-25 19:56:33.598967+00	\N	Premier 6000 Plus	$2,456,000.00 MXN	Chalco, Estado de México	Tengo a la venta esta hermosa casa, te enamoraras de ella, es única en el Estado de México que te brindará lo que tu familia y tú buscan. Casa moderna con los mejores acabados y de lujo, ven y conoce las hermosas ubicaciones en Chalco. Carretera Mixquic-Chalco. ‼️✨AGENDA TU CITA HOY MISMO✨‼️	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451434/RealState/premier-6000-plus.webp	\N
+11	2023-04-23 22:38:41.509674+00	2023-04-25 19:56:51.208711+00	\N	Royal 8000	$2,629,000.00 MXN	Chalco, Estado de México	En Residencial Iztac hay un lugar hermoso en el que podrás vivir experiencias en compañía de tu familia y amigos. Tenemos diferentes casas para diferentes presupuestos que se pueden ajustar a tu economía, no hay mejor inversión que un bien inmueble, visita *RESIDENCIAL IZTAC* y conoce las mejores casas del Estado de México, no esperes más y ‼️“AGENDA UNA CITA”‼️	t	3	\N	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451470/RealState/royal-8000.webp	\N
+4	2023-04-23 22:37:12.397654+00	2023-04-28 21:02:42.181904+00	\N	Super 1000 Plus	$1,212,000.00 MXN	Chalco, Estado de México	#Te enamorarás de esta hermosa casa, ya que tiene todo lo que necesitas. ##Sus espacios son amplios y cómodos, con una excelente distribución de los mismos.Además, esta casa cuenta con una ubicación privilegiada en una zona segura y tranquila, lo que te permitirá vivir en un ambiente de paz y tranquilidad. La cercanía a todos los servicios que necesitas es otra de las grandes ventajas de esta opción. Pero eso no es todo. La casa ha sido construida con materiales de alta calidad y con una atención al detalle que se nota en cada rincón. Desde la fachada hasta los acabados interiores, todo ha sido pensado para que disfrutes al máximo de tu nuevo hogar. Te invito a que vengas a conocer esta maravillosa opción y compruebes por ti mismo todo lo que esta casa tiene para ofrecer. ¡No te arrepentirás! ❤️‼️✨ La casa más vendida y solicitada te espera.	t	3	0	https://res.cloudinary.com/dhyxqmnua/image/upload/v1682451244/RealState/super-1000-plus.webp	0
 \.
 
 
@@ -331,7 +342,7 @@ SELECT pg_catalog.setval('public.house_details_id_seq', 12, true);
 -- Name: house_galleries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: felixvnolasco
 --
 
-SELECT pg_catalog.setval('public.house_galleries_id_seq', 1, true);
+SELECT pg_catalog.setval('public.house_galleries_id_seq', 11, true);
 
 
 --
